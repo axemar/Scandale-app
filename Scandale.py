@@ -57,7 +57,7 @@ missions = [
 # Texte jeu
 st.title("Le scandal 😈")
 multi = '''  
-> Écrit par AM  
+Écrit par AM  
 
 ---
 
@@ -123,7 +123,7 @@ Vous devez réaliser vos missions dans le plus grand secret.
 Exemple : montrer la mission sur son tel.  
 Cependant, il peut être intéréssant d'avoir des témoins.  
 
-> ⚠️ **ATTENTION**  
+⚠️ **ATTENTION**  
 Il s'agit ici d'une validation sociale entre deux joueurs.  
 Il n'y a pas besoin d'un jury collectif ni d'un maître du jeu.  
 Le jeu repose donc le fair-play de la victime comme du bourreau.  
@@ -198,7 +198,7 @@ if noms == None or noms == "":
 
 
 joueurs = noms.split(",")
-
+joueurs = sorted(joueurs)
 
 # Copie liste joueurs complet
 if "list_jou_comp" not in st.session_state:   
