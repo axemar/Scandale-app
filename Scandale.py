@@ -300,7 +300,7 @@ if (len(st.session_state.list_jou_comp) % 2 == 1) :
     role[taupe] = "La Taupe 🐀"
     mon_hash_j = str(hash(str(taupe)+str(st.session_state.seed)+str(st.secrets["hash_seed"])))
     mon_hash_j = mon_hash_j[3:9]
-    code[joueur] = mon_hash + "-" + mon_hash_j
+    code[taupe] = mon_hash + "-" + mon_hash_j
 
 
 st.markdown(''' ---  ''')
