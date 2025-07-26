@@ -213,8 +213,8 @@ st.text("Vos joueurs : " + str(st.session_state.list_jou_comp))
 
 
 # Hash
-mon_hash = str(hash(str(st.session_state.list_jou_comp)+str(st.session_state.seed)))
-mon_hash = mon_hash[5:9]
+mon_hash = str(hash(str(st.session_state.list_jou_comp)+str(st.session_state.seed)+str(st.secrets["hash_seed"])))
+mon_hash = mon_hash[3:9]
 
 
 # Shuffle ordre joueurs
@@ -267,7 +267,9 @@ for i, joueur in enumerate(journ):
     cible2[joueur] = cible
     missions2[joueur] = missi
     role[joueur] = "Journaliste 🔍"
-    code[joueur] = mon_hash + "-" + Code()
+    mon_hash_j = str(hash(str(joueur)+str(st.session_state.seed)+str(st.secrets["hash_seed"])))
+    mon_hash_j = mon_hash_j[3:9]
+    code[joueur] = mon_hash + "-" + mon_hash_j
 
 # Politiciens
 for i, joueur in enumerate(polit):
@@ -287,14 +289,18 @@ for i, joueur in enumerate(polit):
     cible2[joueur] = cible
     missions2[joueur] = missi
     role[joueur] = "Politicien 💰"
-    code[joueur] = mon_hash + "-" + Code()
+    mon_hash_j = str(hash(str(joueur)+str(st.session_state.seed)+str(st.secrets["hash_seed"])))
+    mon_hash_j = mon_hash_j[3:9]
+    code[joueur] = mon_hash + "-" + mon_hash_j
 
 # Taupe
 if (len(st.session_state.list_jou_comp) % 2 == 1) : 
     cible2[taupe] = st.session_state.list_jou
     missions2[taupe] = [missions[ordre[-1]], missions[ordre[-2]], missions[ordre[-3]]]
     role[taupe] = "La Taupe 🐀"
-    code[taupe] = mon_hash + "-" + Code()
+    mon_hash_j = str(hash(str(taupe)+str(st.session_state.seed)+str(st.secrets["hash_seed"])))
+    mon_hash_j = mon_hash_j[3:9]
+    code[joueur] = mon_hash + "-" + mon_hash_j
 
 
 st.markdown(''' ---  ''')
