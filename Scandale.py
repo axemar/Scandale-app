@@ -196,9 +196,9 @@ if noms == None or noms == "":
     st.warning("Veuillez entrer une valeur pour continuer.")
     st.stop()
 
-
 joueurs = noms.split(",")
 joueurs = sorted(joueurs)
+
 
 # Copie liste joueurs complet
 if "list_jou_comp" not in st.session_state:   
@@ -210,6 +210,11 @@ if not st.session_state.list_jou_comp:
 
 # Affichage liste joueurs complet
 st.text("Vos joueurs : " + str(st.session_state.list_jou_comp))
+
+
+# Hash
+mon_hash = str(hash(str(st.session_state.list_jou_comp)+str(st.session_state.seed)))
+mon_hash = mon_hash[5:9]
 
 
 # Shuffle ordre joueurs
@@ -262,7 +267,7 @@ for i, joueur in enumerate(journ):
     cible2[joueur] = cible
     missions2[joueur] = missi
     role[joueur] = "Journaliste 🔍"
-    code[joueur] = Code()
+    code[joueur] = mon_hash + "-" + Code()
 
 # Politiciens
 for i, joueur in enumerate(polit):
@@ -282,13 +287,14 @@ for i, joueur in enumerate(polit):
     cible2[joueur] = cible
     missions2[joueur] = missi
     role[joueur] = "Politicien 💰"
-    code[joueur] = Code()
+    code[joueur] = mon_hash + "-" + Code()
 
 # Taupe
-cible2[taupe] = st.session_state.list_jou
-missions2[taupe] = [missions[ordre[-1]], missions[ordre[-2]], missions[ordre[-3]]]
-role[taupe] = "La Taupe 🐀"
-code[taupe] = Code()
+if (len(st.session_state.list_jou_comp) % 2 == 1) : 
+    cible2[taupe] = st.session_state.list_jou
+    missions2[taupe] = [missions[ordre[-1]], missions[ordre[-2]], missions[ordre[-3]]]
+    role[taupe] = "La Taupe 🐀"
+    code[taupe] = mon_hash + "-" + Code()
 
 
 st.markdown(''' ---  ''')
@@ -359,5 +365,3 @@ if saisi_code != "":
         st.text(liste_infos)
     if check == 0 :
         st.text("Erreur : joueur non trouvé")
-
-
