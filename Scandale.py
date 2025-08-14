@@ -359,9 +359,9 @@ if saisi_code != "":
             st.text("Rôle : " + str(st.session_state.role[jj]))
             st.text("Cibles : " + str(st.session_state.jou[jj]))
             st.text("Missions : ")
-            st.text("str(st.session_state.mis[jj][0]))
-            st.text("str(st.session_state.mis[jj][1]))
-            st.text("str(st.session_state.mis[jj][2]))
+            st.text(str(st.session_state.mis[jj][0]))
+            st.text(str(st.session_state.mis[jj][1]))
+            st.text(str(st.session_state.mis[jj][2]))
             check = 2
 
             if str(st.session_state.role[jj]) == "La Taupe 🐀":
@@ -374,4 +374,5 @@ if saisi_code != "":
         st.text(liste_infos)
     if check == 0 :
         st.text("Erreur : joueur non trouvé")
+
 
